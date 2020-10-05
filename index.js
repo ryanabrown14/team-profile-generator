@@ -5,9 +5,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-let engineer = [];
-let intern = [];
-let manager = [];
+let engineerArr = [];
+let internArr = [];
+let managerArr = [];
 
 function addMember() {
     inquirer.prompt([{
@@ -49,6 +49,9 @@ function addMember() {
             name: 'github',
             message: 'What is the employees github'
         })
+        const intern = new Intern(name, role, id, email, github);
+        internArr.push(intern)
+
     }
     else if (role === "Intern") {
         inquirer.prompt({
@@ -65,6 +68,15 @@ function addMember() {
         })
 
     }
+    inquirer.prompt({
+        type: 'list',
+        name: 'addMember',
+        message: 'Would you like to add another employee?',
+        choices: [
+            'Yes',
+            'No'
+        ]
+    })
 })
 
 
